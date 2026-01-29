@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anand Motor Product - Leading Manufacturer Since 1978</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Advanced Diagonal Split Design */
+        .hero-container {
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Left White Section */
+        .hero-split-white {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+            clip-path: polygon(0 0, 100% 0, 0% 100%, 0% 100%);
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* Hero Image Inside White Section */
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            right: 20;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.95;
+            mix-blend-mode: multiply;
+        }
+
+        /* Right Red Section */
+        .hero-split-red {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 70%;
+            height: 100%;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            clip-path: polygon(80% 0, 100% 0, 100% 100%, 0% 100%);
+            z-index: 1;
+        }
+
+        /* Grid Pattern Overlay */
+        .grid-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        /* Floating Shapes Animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        @keyframes floatReverse {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(20px) rotate(-5deg);
+            }
+        }
+
+        @keyframes scroll-horizontal {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-scroll-horizontal {
+            animation: scroll-horizontal 30s linear infinite;
+        }
+
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .shape-1 {
+            top: 10%;
+            left: 10%;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #1e40af, transparent);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            bottom: 15%;
+            right: 15%;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #dc2626, transparent);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: floatReverse 8s ease-in-out infinite;
+        }
+
+        .shape-3 {
+            top: 50%;
+            left: 45%;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #ffffff, transparent);
+            transform: rotate(45deg);
+            animation: float 10s ease-in-out infinite;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: relative;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .navbar-gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #dc2626 0%, #1e40af 100%);
+        }
+
+        /* Content Positioning */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            padding-top: 60px;
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #dc2626 0%, #1e40af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Modern Button */
+        .btn-primary {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.4);
+        }
+
+        /* Form Styling */
+        .form-input:focus {
+            outline: none;
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+        }
+
+        /* Animated Elements */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-fadeInLeft {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-fadeInRight {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+            opacity: 0;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+
+        /* Image Container */
+        .hero-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image:hover {
+            transform: perspective(1000px) rotateY(0deg) scale(1.02);
+        }
+
+        /* Stats Badge */
+        .stats-badge {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 15px 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .badge-1 {
+            top: 20%;
+            left: -50px;
+        }
+
+        .badge-2 {
+            bottom: 20%;
+            right: -50px;
+            animation-delay: 2s;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-split-white {
+                clip-path: polygon(0 0, 100% 0, 100% 50%, 0% 60%);
+                width: 100%;
+                height: 55%;
+            }
+
+            .hero-split-red {
+                clip-path: polygon(0 45%, 100% 35%, 100% 100%, 0% 100%);
+                width: 100%;
+                height: 55%;
+                top: auto;
+                bottom: 0;
+            }
+
+            .hero-bg-image {
+                object-position: center center;
+            }
+
+            .hero-image {
+                transform: none;
+            }
+
+            .stats-badge {
+                position: static;
+                margin: 10px 0;
+            }
+
+            .hero-content {
+                padding-top: 80px;
+            }
+        }
+
+        /* Tablet Responsive */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-split-white {
+                width: 50%;
+                clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
+            }
+
+            .hero-split-red {
+                width: 55%;
+                clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+            }
+        }
+
+        /* Large Desktop */
+        @media (min-width: 1920px) {
+            .hero-container {
+                max-width: 1920px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Pulse Animation for Features */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+            }
+
+            50% {
+                box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+            }
+        }
+
+        .feature-icon {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Container with Diagonal Split -->
+    <div class="hero-container min-h-screen flex flex-col">
+        <!-- Background Image - Desktop
+    <div class="hero-bg-image hidden lg:block" style="z-index: 1;">
+        <img src="/4.5x4.5 fit.jpg" alt="Anand Motor Products" class="hero-bg-image">
+    </div>
+
+    Background Image - Mobile
+    <div class="hero-bg-image block lg:hidden" style="z-index: 1;">
+        <img src="/Car 4.5x4.5 fit (2).jpg" alt="Anand Motor Products Mobile" class="hero-bg-image">
+    </div> -->
+
+        <div class="floating-shape shape-2" style="z-index: 2;"></div>
+        <div class="floating-shape shape-3" style="z-index: 2;"></div>
+
+        <!-- Right Red Section -->
+        <div class="hero-split-red" style="z-index: 0;">
+            <div class="grid-pattern"></div>
+            <div class="floating-shape shape-1"></div>
+        </div>
+
+        <!-- Navbar -->
+        <header class="navbar relative bg-white border-b-4 border-red-600" style="z-index: 50;">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-20">
+                <div class="flex items-center justify-between py-3 lg:py-4">
+                    <!-- Left Logo -->
+                    <div class="flex items-center animate-fadeInLeft">
+                        <img src="/AMPAutomotiveLogo(Transparent).png" alt="AMP Automotive Components"
+                            class="h-20 lg:h-24 w-auto">
+                    </div>
+
+                    <!-- Center Email Section -->
+                    <div class="hidden md:flex flex-col items-center justify-center text-center">
+                        <span class="text-xs lg:text-sm text-gray-500 uppercase tracking-wider mb-1">EMAIL US</span>
+                        <a href="mailto:amp@amp-marketing.com"
+                            class="text-base lg:text-lg font-semibold text-gray-900 hover:text-red-600 transition-colors duration-200">
+                            amp@amp-marketing.com
+                        </a>
+                    </div>
+
+                    <!-- Right Logo -->
+                    <div class="flex items-center animate-fadeInLeft">
+                        <img src="/OE Logo.png" alt="OE Manufacturer Since 1978" class="h-20 lg:h-24 w-auto">
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-gradient"></div>
+        </header>
+
+        <!-- Hero Content -->
+        <div class="hero-content mb-10" style="z-index: 10; position: relative;">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-8 lg:gap-42  items-center">
+                    <!-- Left Content -->
+                    <div class="space-y-6 p-2 md:pl-20 lg:mb-32">
+                        <div class="animate-fadeInLeft">
+                            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-snug text-gray-900">
+                                Are you tired of ordering from
+                                <span class="block text-blue-800 font-semibold mt-1">
+                                    multiple brands
+                                </span>
+                                <span class="block mt-2 text-gray-900">
+                                    due to
+                                </span>
+                                <span class="block mt-1">
+                                    <span class="text-blue-800 font-semibold">
+                                        limited products
+                                    </span>
+                                    <span class="text-gray-900 font-medium">
+                                        and
+                                    </span>
+                                    <span class="text-red-600 font-semibold">
+                                        low margins?
+                                    </span>
+                                </span>
+                            </h2>
+                        </div>
+
+
+
+                        <!-- Product Images Section - Desktop -->
+                        <div class="hidden lg:block animate-fadeInLeft delay-100 mt-8">
+                            <div class="relative">
+                                <img src="/4.5x4.5 fit.jpg" alt="AMP Automotive Products"
+                                    class="w-full max-w-2xl h-auto object-contain"
+                                    style="position: relative; z-index: 5;">
+                            </div>
+                        </div>
+
+                        <!-- Product Images Section - Mobile -->
+                        <div class="block lg:hidden animate-fadeInLeft delay-100 mt-6">
+                            <div class="relative">
+                                <img src="/Car 4.5x4.5 fit (2).jpg" alt="AMP Automotive Products Mobile"
+                                    class="w-full h-auto object-contain" style="position: relative; z-index: 5;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Content - Form -->
+                    <div class="animate-fadeInRight delay-200 lg:px-12">
+                        <div class="bg-white border-2 border-red-900 p-6 lg:p-7 relative rounded-lg shadow-xl">
+                            <!-- Decorative Corner -->
+                            <div
+                                class="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-red-600 to-blue-800 rounded-full opacity-20 blur-2xl">
+                            </div>
+                            <div
+                                class="absolute -bottom-4 -left-4 w-24 h-24 bg-gradient-to-br from-blue-800 to-red-600 rounded-full opacity-20 blur-2xl">
+                            </div>
+
+                            <div class="relative z-10">
+                                <div class="text-center mb-5">
+                                    <div class="text-red-600 text-lg font-bold mb-2">
+                                        Fill To Download
+                                    </div>
+                                    <h3 class="text-2xl lg:text-2xl font-black text-black mb-1">
+                                        Dealer Guide
+                                    </h3>
+                                </div>
+
+                                <form class="space-y-3">
+                                    <div>
+                                        <input type="text" placeholder="Enter Firm Name / Full Name"
+                                            class="w-full px-4 py-2.5 text-sm border-2 border-gray-200 rounded-lg form-input transition-all focus:border-red-600 font-medium"
+                                            required>
+                                    </div>
+
+                                    <div>
+                                        <input type="tel" placeholder="Enter Phone No."
+                                            class="w-full px-4 py-2.5 text-sm border-2 border-gray-200 rounded-lg form-input transition-all focus:border-red-600 font-medium"
+                                            required>
+                                    </div>
+
+                                    <div>
+                                        <input type="email" placeholder="Enter Email Address"
+                                            class="w-full px-4 py-2.5 text-sm border-2 border-gray-200 rounded-lg form-input transition-all focus:border-red-600 font-medium"
+                                            required>
+                                    </div>
+
+                                    <div>
+                                        <select
+                                            class="w-full px-4 py-2.5 text-sm border-2 border-gray-200 rounded-lg form-input transition-all focus:border-red-600 font-medium text-gray-500">
+                                            <option>Select you City / State</option>
+                                            <option>Delhi</option>
+                                            <option>Mumbai</option>
+                                            <option>Bangalore</option>
+                                            <option>Chennai</option>
+                                            <option>Kolkata</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <select
+                                            class="w-full px-4 py-2.5 text-sm border-2 border-gray-200 rounded-lg form-input transition-all focus:border-red-600 font-medium text-gray-500">
+                                            <option>Are You Currently ?</option>
+                                            <option>Retailer</option>
+                                            <option>Wholesaler</option>
+                                            <option>Distributor</option>
+                                            <option>Mechanic</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <textarea placeholder="="
+                                            class="w-full px-4 py-2.5 text-sm border-2 border-gray-200 rounded-lg form-input transition-all focus:border-red-600 resize-none font-medium"
+                                            rows="3"></textarea>
+                                    </div>
+
+                                    <button type="submit"
+                                        class="w-full bg-gray-900 hover:bg-gray-800 text-white font-bold py-3 text-sm rounded-md shadow-xl hover:shadow-2xl relative overflow-hidden transform hover:-translate-y-0.5 transition-all duration-200">
+                                        <span class="relative z-10">Download Guide</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievements Section -->
+
+ <section class="py-20 bg-white">
+    <div class="container mx-auto space-y-6 px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-blue-800 mb-4 animate-on-scroll">
+                OUR <span class="text-red-500">ACHIEVEMENTS</span>
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-red-600 to-blue-800 mx-auto animate-on-scroll delay-100">
+            </div>
+        </div>
+
+        <!-- First Row - 5 items -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-8 mb-8">
+            <!-- Achievement 1 -->
+            <div class="achievement-card bg-white rounded-sm p-4 text-center animate-on-scroll">
+                <div class="flex items-center justify-center mx-auto mb-4">
+                    <img src="/icon/76 year 1.png" alt="" class="h-16 md:h-24 w-auto">
+                </div>
+                <div class="counter text-red-600 mb-2 text-2xl md:text-3xl font-bold" data-target="76">0</div>
+                <p class="text-gray-600 font-semibold text-sm md:text-base">Years</p>
+                <p class="text-xs md:text-sm text-gray-500">in business</p>
+            </div>
+
+            <!-- Achievement 2 -->
+            <div class="achievement-card bg-white rounded-sm p-4 text-center animate-on-scroll delay-100">
+                <div class="flex items-center justify-center mx-auto mb-4">
+                    <img src="/icon/3500+ 1.png" alt="" class="h-16 md:h-24 w-auto">
+                </div>
+                <div class="counter text-blue-800 mb-2 text-2xl md:text-3xl font-bold" data-target="3500">0</div>
+                <p class="text-gray-600 font-semibold text-sm md:text-base">Products</p>
+                <p class="text-xs md:text-sm text-gray-500">Wide Range</p>
+            </div>
+
+            <!-- Achievement 3 -->
+            <div class="achievement-card bg-white rounded-sm p-4 text-center animate-on-scroll delay-200">
+                <div class="flex items-center justify-center mx-auto mb-4">
+                    <img src="/icon/1000+ Employees 1.png" alt="" class="h-16 md:h-24 w-auto">
+                </div>
+                <div class="counter text-red-600 mb-2 text-2xl md:text-3xl font-bold" data-target="1000">0</div>
+                <p class="text-gray-600 font-semibold text-sm md:text-base">Employees</p>
+                <p class="text-xs md:text-sm text-gray-500">Skilled Team</p>
+            </div>
+
+            <!-- Achievement 4 -->
+            <div class="achievement-card bg-white rounded-sm p-4 text-center animate-on-scroll delay-300">
+                <div class="flex items-center justify-center mx-auto mb-4">
+                    <img src="/icon/Pan Inida 1.png" alt="" class="h-16 md:h-24 w-auto">
+                </div>
+                <div class="counter text-blue-800 mb-2 text-2xl md:text-3xl font-bold" data-target="14000">0</div>
+                <p class="text-gray-600 font-semibold text-sm md:text-base">Pan-India</p>
+                <p class="text-xs md:text-sm text-gray-500">Retail Points</p>
+            </div>
+
+            <!-- Achievement 5 -->
+            <div class="achievement-card bg-white rounded-sm p-4 text-center animate-on-scroll delay-100 col-span-2 sm:col-span-1">
+                <div class="flex items-center justify-center mx-auto mb-4">
+                    <img src="/icon/TS Certified 1.png" alt="" class="h-16 md:h-24 w-auto">
+                </div>
+                <div class="text-2xl md:text-3xl font-bold text-red-600 mb-2">ISO 9001</div>
+                <p class="text-gray-600 font-semibold text-sm md:text-base">Certified</p>
+                <p class="text-xs md:text-sm text-gray-500">Quality Assured</p>
+            </div>
+        </div>
+
+        <!-- Second Row - 4 items centered -->
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-5xl mx-auto">
+            <!-- Achievement 6 -->
+            <div class="achievement-card bg-white rounded-sm p-4 text-center animate-on-scroll delay-200">
+                <div class="flex items-center justify-center mx-auto mb-4">
+                    <img src="/icon/15+ Countries 1.png" alt="" class="h-16 md:h-24 w-auto">
+                </div>
+                <div class="counter text-blue-800 mb-2 text-2xl md:text-3xl font-bold" data-target="15">0</div>
+                <p class="text-gray-600 font-semibold text-sm md:text-base">Countries</p>
+                <p class="text-xs md:text-sm text-gray-500">Brand Presence</p>
+            </div>
+
+            <!-- Achievement 7 -->
+            <div class="achievement-card bg-white rounded-sm p-4 text-center animate-on-scroll delay-300">
+                <div class="flex items-center justify-center mx-auto mb-4">
+                    <img src="/icon/Better Margin 1.png" alt="" class="h-16 md:h-24 w-auto">
+                </div>
+                <div class="text-2xl md:text-3xl font-bold text-red-600 mb-2">Better</div>
+                <p class="text-gray-600 font-semibold text-sm md:text-base">Margin</p>
+                <p class="text-xs md:text-sm text-gray-500">Higher Returns</p>
+            </div>
+
+            <!-- Achievement 8 -->
+            <div class="achievement-card bg-white rounded-sm p-4 text-center animate-on-scroll delay-400">
+                <div class="flex items-center justify-center mx-auto mb-4">
+                    <img src="/icon/Quick Delivery 1.png" alt="" class="h-16 md:h-24 w-auto">
+                </div>
+                <h3 class="text-xl md:text-2xl font-bold text-red-600 mb-2">Quick Delivery</h3>
+                <p class="text-gray-400 text-xs md:text-sm">As soon as possible</p>
+            </div>
+
+            <!-- Achievement 9 -->
+            <div class="achievement-card bg-white rounded-sm p-4 text-center animate-on-scroll delay-400">
+                <div class="flex items-center justify-center mx-auto mb-4">
+                    <img src="/icon/350000 sq ft 1.png" alt="" class="h-16 md:h-24 w-auto">
+                </div>
+                <h3 class="text-xl md:text-2xl font-bold text-red-600 mb-2">350,000</h3>
+                <p class="text-gray-400 text-xs md:text-sm">Sq.Ft. Manufacturing</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Challenge & image Section -->
+    <section class="py-20 grid-pattern-bg">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- image -->
+                <div class="animate-on-scroll w-full">
+                    <div class="video-container rounded-sm overflow-hidden shadow-2xl">
+                        <div class="relative bg-gradient-to-br from-red-600 to-blue">
+                            <div class="video-container rounded-sm overflow-hidden shadow-2xl">
+                                <div
+                                    class="relative bg-gradient-to-br from-red-600 to-blue-800 aspect-video flex items-center justify-center">
+                                    <!-- Background Image Added Here -->
+                                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200"
+                                        alt="Video Thumbnail" class="absolute inset-0 w-full h-full object-cover">
+
+
+                                    <div class="absolute bottom-4 left-4 right-4 text-white">
+                                        <h3 class="text-2xl font-bold mb-2">7 Reasons to Join</h3>
+                                        <p class="text-lg">Anand Motor Product as a Dealer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Challenges -->
+                <div class="animate-on-scroll delay-200 ">
+                    <h2 class="text-3xl md:text-4xl font-bold text-black mb-3">
+                        Are ongoing challenges making you feel
+                    </h2>
+                    <h3 class="text-2xl md:text-3xl font-bold text-blue-600 mb-8">
+                        stuck in your dealership's growth?
+                    </h3>
+
+                    <div class="space-y-2">
+                        <div class="reason-card p-1 rounded-sm bg-gray-50">
+                            <div class="flex items-start space-x-3">
+                                <svg class="w-6 h-6 text-red-600 flex-shrink-0 mt-1" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <p class="text-gray-700">Tired of ordering from multiple brands due to a lack of
+                                    product range?</p>
+                            </div>
+                        </div>
+
+                        <div class="reason-card p-1 rounded-sm bg-gray-50">
+                            <div class="flex items-start space-x-3">
+                                <svg class="w-6 h-6 text-red-600 flex-shrink-0 mt-1" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <p class="text-gray-700">Struggling with bulk orders of ₹2-4 lakh that strain
+                                    your finances, limit flexibility, and affect your ROI?</p>
+                            </div>
+                        </div>
+
+                        <div class="reason-card p-1 rounded-sm bg-gray-50">
+                            <div class="flex items-start space-x-3">
+                                <svg class="w-6 h-6 text-red-600 flex-shrink-0 mt-1" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <p class="text-gray-700">Looking to enhance sales support by offering free
+                                    freight on orders over ₹25,000, encouraging larger orders and saving costs
+                                    for distributors?</p>
+                            </div>
+                        </div>
+
+                        <div class="reason-card p-1 rounded-sm bg-gray-50">
+                            <div class="flex items-start space-x-3">
+                                <svg class="w-6 h-6 text-red-600 flex-shrink-0 mt-1" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <p class="text-gray-700">Seeking better margins by partnering directly with a
+                                    manufacturer for a long-term relationship—without strict sales targets?</p>
+                            </div>
+                        </div>
+
+                        <div class="reason-card p-1 rounded-sm bg-gray-50">
+                            <div class="flex items-start space-x-3">
+                                <svg class="w-6 h-6 text-red-600 flex-shrink-0 mt-1" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <p class="text-gray-700">Seeking exclusive rights in your area for 3 years to
+                                    enhance distributor loyalty and brand investment, without excessive targets?
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-20 bg-white text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 animate-on-scroll">
+                    <span class="text-blue-800">WIDEST RANGE</span>
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-500 mt-2">IN
+                        INDIA</span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-red-600 to-blue-800 mx-auto animate-on-scroll delay-100">
+                </div>
+            </div>
+            <div class="relative overflow-hidden">
+                <div class="flex gap-6 animate-scroll-horizontal w-max">
+                    <!-- Product 1 -->
+                    <div class=" rounded-sm p-8 text-center  animate-on-scroll delay-400">
+                        <div class="flex items-center justify-center mx-auto mb-4">
+                            <img src="/product/product-sm1.jpg" alt="" height="100" width="120">
+                        </div>
+                        <h3 class="text-xl font-medium mb-2 text-black">Strut Mounts</h3>
+
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class=" rounded-sm p-8 text-center  animate-on-scroll delay-400">
+                        <div class="flex items-center justify-center mx-auto mb-4">
+                            <img src="/product/product-em1.jpg" alt="" height="100" width="120">
+                        </div>
+                        <h3 class="text-xl font-medium mb-2 text-black">Engine & <br> Transmission Mounts</h3>
+
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class=" rounded-sm p-8 text-center  animate-on-scroll delay-400">
+                        <div class="flex items-center justify-center mx-auto mb-4">
+                            <img src="/product/product-bs1.jpg" alt="" height="100" width="120">
+                        </div>
+                        <h3 class="text-xl font-medium mb-2 text-black">Bushings</h3>
+
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class=" rounded-sm p-8 text-center  animate-on-scroll delay-400">
+                        <div class="flex items-center justify-center mx-auto mb-4">
+                            <img src="/product/product-is1.jpg" alt="" height="100" width="120">
+                        </div>
+                        <h3 class="text-xl font-medium mb-2 text-black">Isolators</h3>
+
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class=" rounded-sm p-8 text-center  animate-on-scroll delay-400">
+                        <div class="flex items-center justify-center mx-auto mb-4">
+                            <img src="/product/product-hd1.jpg" alt="" height="100" width="120">
+                        </div>
+                        <h3 class="text-xl font-medium mb-2 text-black">Heavy Duty <br> Components</h3>
+
+                    </div>
+                    <!-- Product 6 -->
+                    <div class=" rounded-sm p-8 text-center  animate-on-scroll delay-400">
+                        <div class="flex items-center justify-center mx-auto mb-4">
+                            <img src="/product/product-tr1.jpg" alt="" height="100" width="120">
+                        </div>
+                        <h3 class="text-xl font-medium mb-2 text-black">Torque Rods</h3>
+
+                    </div>
+
+                    <!-- Product 7 -->
+                    <div class=" rounded-sm p-8 text-center  animate-on-scroll delay-400">
+                        <div class="flex items-center justify-center mx-auto mb-4">
+                            <img src="/product/product-ss1.jpg" alt="" height="100" width="120">
+                        </div>
+                        <h3 class="text-xl font-medium mb-2 text-black">Spring Seats</h3>
+
+                    </div>
+
+                    <!-- Product 8 -->
+                    <div class=" rounded-sm p-8 text-center  animate-on-scroll delay-400">
+                        <div class="flex items-center justify-center mx-auto mb-4">
+                            <img src="/product/product-b1.jpg" alt="" height="100" width="120">
+                        </div>
+                        <h3 class="text-xl font-medium mb-2 text-black">Brackets</h3>
+
+                    </div>
+                    <!-- Product 9 -->
+                    <div class=" rounded-sm p-8 text-center  animate-on-scroll delay-400">
+                        <div class="flex items-center justify-center mx-auto mb-4">
+                            <img src="/product/product-jb1.jpg" alt="" height="100" width="120">
+                        </div>
+                        <h3 class="text-xl font-medium mb-2 text-black">Jounce Bumpers</h3>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 grid-pattern-bg ">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-4 animate-on-scroll">
+                    Why Choose Us?
+                </h2>
+                <div class="w-24 h-1 bg-red-700 mx-auto animate-on-scroll delay-100"></div>
+            </div>
+
+            <div class="relative overflow-hidden">
+                <div class="flex gap-6 animate-scroll-horizontal w-max">
+
+                    <!-- Reason 1 -->
+                    <div
+                        class="bg-white  sm:w-[260px] md:w-[470px] backdrop-blur-sm border-2 border-red-600 border-opacity-20 rounded-sm p-4 text-black animate-on-scroll">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-white bg-opacity-20 p-3 rounded-sm flex-shrink-0">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
+                                    <path
+                                        d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z" />
+                                    <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2">Extensive Product Range</h3>
+                                <p class="text-black text-opacity-90">Anand Motor offers over 2,500 products, providing
+                                    a
+                                    wide selection for distributors to choose from. This extensive product range allows
+                                    distributors to cater to diverse customer needs and preferences.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reason 2 -->
+                    <div
+                        class="bg-white  sm:w-[260px] md:w-[470px] backdrop-blur-sm border-2 border-red-600 border-opacity-20 rounded-sm p-4 text-black animate-on-scroll delay-100">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-white bg-opacity-20 p-3 rounded-sm flex-shrink-0">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2">High-Quality Products</h3>
+                                <p class="text-black text-opacity-90">As an ISO 9001:2015 certified manufacturer, Anand
+                                    Motor ensures top-notch quality across its product line. Distributors can trust the
+                                    quality and performance of Anand's two-wheeler and three-wheeler auto components.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reason 3 -->
+                    <div
+                        class="bg-white  sm:w-[260px] md:w-[470px] backdrop-blur-sm border-2 border-red-600 border-opacity-20 rounded-sm p-4 text-black animate-on-scroll delay-200">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-white bg-opacity-20 p-3 rounded-sm flex-shrink-0">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                                    <path
+                                        d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2">Quick Dispatch & Efficient Logistics</h3>
+                                <p class="text-black text-opacity-90">Anand's commitment to quick dispatch within a day
+                                    helps distributors maintain a smooth supply chain and reduces wait times for product
+                                    deliveries.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reason 4 -->
+                    <div
+                        class="bg-white  sm:w-[260px] md:w-[470px] backdrop-blur-sm border-2 border-red-600 border-opacity-20 rounded-sm p-4 text-black animate-on-scroll delay-300">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-white bg-opacity-20 p-3 rounded-sm flex-shrink-0">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2">High ROI for Distributors</h3>
+                                <p class="text-black text-opacity-90">Anand's products offer high returns on investment
+                                    due
+                                    to their quality, reputation, and demand in the market. This ensures that
+                                    distributors
+                                    can achieve profitability and business growth.</p>
+                            </div>
+                        </div>
+                    </div><!-- Reason 5 -->
+                    <div
+                        class="bg-white  sm:w-[260px] md:w-[470px] backdrop-blur-sm border-2 border-red-600 border-opacity-20 rounded-sm p-4 text-black animate-on-scroll delay-100">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-white bg-opacity-20 p-3 rounded-sm flex-shrink-0">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2">Strong Recognition & Brand Trust</h3>
+                                <p class="text-black text-opacity-90">With a history dating back to 1960, Anand has
+                                    established itself as a trusted and reputable brand in the industry. Distributors
+                                    can
+                                    benefit from partnering with a well-known and respected manufacturer.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reason 6 -->
+                    <div
+                        class="bg-white  sm:w-[260px] md:w-[470px] backdrop-blur-sm border-2 border-red-600 border-opacity-20 rounded-sm p-4 text-black animate-on-scroll delay-200">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-white bg-opacity-20 p-3 rounded-sm flex-shrink-0">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2">Global Expertise</h3>
+                                <p class="text-black text-opacity-90">With exports to over 15 countries, Anand has a
+                                    proven
+                                    track record of international market penetration. Distributors can leverage this
+                                    global
+                                    expertise to expand their reach and serve new markets.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white text-white overflow-hidden">
+        <div class="container mx-auto px-4 mb-12">
+            <div class="text-center">
+                <h2 class="text-4xl md:text-5xl font-bold text-blue-800 mb-4">
+                    WHAT OUR <span class="text-red-500">DEALERS SAY</span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-red-600 to-blue-800 mx-auto mb-4"></div>
+                <p class="text-white text-lg">Trusted by thousands of dealers across India</p>
+            </div>
+        </div>
+
+        <div class="relative">
+            <div class="flex overflow-hidden">
+                <div class="scroll-container flex gap-6 px-3">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card bg-white border border-gray-200 w-[600px] flex-shrink-0">
+
+                        <!-- YouTube Video -->
+                        <div class="relative aspect-video bg-black">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/giE894r71Rc"
+                                title="AMP Corporate Video (Anand Motor Products)" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+
+                        <!-- Info -->
+                        <div class="p-5">
+                            <h4 class="text-base font-semibold text-gray-900">
+                                AMP Corporate Video
+                            </h4>
+                            <p class="text-sm text-gray-600">
+                                Anand Motor Products · Company Overview
+                            </p>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card bg-white border border-gray-200 w-[600px] flex-shrink-0">
+
+                        <!-- YouTube Video -->
+                        <div class="relative aspect-video bg-black">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/giE894r71Rc"
+                                title="AMP Corporate Video (Anand Motor Products)" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+
+                        <!-- Info -->
+                        <div class="p-5">
+                            <h4 class="text-base font-semibold text-gray-900">
+                                AMP Corporate Video
+                            </h4>
+                            <p class="text-sm text-gray-600">
+                                Anand Motor Products · Company Overview
+                            </p>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Testimonial 3 -->
+
+                    <div class="testimonial-card bg-white border border-gray-200 w-[600px] flex-shrink-0">
+
+                        <!-- YouTube Video -->
+                        <div class="relative aspect-video bg-black">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/giE894r71Rc"
+                                title="AMP Corporate Video (Anand Motor Products)" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+
+                        <!-- Info -->
+                        <div class="p-5">
+                            <h4 class="text-base font-semibold text-gray-900">
+                                AMP Corporate Video
+                            </h4>
+                            <p class="text-sm text-gray-600">
+                                Anand Motor Products · Company Overview
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-card bg-white border border-gray-200 w-[600px] flex-shrink-0">
+
+                        <!-- YouTube Video -->
+                        <div class="relative aspect-video bg-black">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/giE894r71Rc"
+                                title="AMP Corporate Video (Anand Motor Products)" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+
+                        <!-- Info -->
+                        <div class="p-5">
+                            <h4 class="text-base font-semibold text-gray-900">
+                                AMP Corporate Video
+                            </h4>
+                            <p class="text-sm text-gray-600">
+                                Anand Motor Products · Company Overview
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Testimonial 5 -->
+                    <div class="testimonial-card bg-white border border-gray-200 w-[600px] flex-shrink-0">
+
+                        <!-- YouTube Video -->
+                        <div class="relative aspect-video bg-black">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/giE894r71Rc"
+                                title="AMP Corporate Video (Anand Motor Products)" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+
+                        <!-- Info -->
+                        <div class="p-5">
+                            <h4 class="text-base font-semibold text-gray-900">
+                                AMP Corporate Video
+                            </h4>
+                            <p class="text-sm text-gray-600">
+                                Anand Motor Products · Company Overview
+                            </p>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Testimonial 6 -->
+                    <div class="testimonial-card bg-white border border-gray-200 w-[600px] flex-shrink-0">
+
+                        <!-- YouTube Video -->
+                        <div class="relative aspect-video bg-black">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/giE894r71Rc"
+                                title="AMP Corporate Video (Anand Motor Products)" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+
+                        <!-- Info -->
+                        <div class="p-5">
+                            <h4 class="text-base font-semibold text-gray-900">
+                                AMP Corporate Video
+                            </h4>
+                            <p class="text-sm text-gray-600">
+                                Anand Motor Products · Company Overview
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Testimonial 1 (Duplicate) -->
+                    <div class="testimonial-card bg-white border border-gray-200 w-[600px] flex-shrink-0">
+
+                        <!-- YouTube Video -->
+                        <div class="relative aspect-video bg-black">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/giE894r71Rc"
+                                title="AMP Corporate Video (Anand Motor Products)" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+
+                        <!-- Info -->
+                        <div class="p-5">
+                            <h4 class="text-base font-semibold text-gray-900">
+                                AMP Corporate Video
+                            </h4>
+                            <p class="text-sm text-gray-600">
+                                Anand Motor Products · Company Overview
+                            </p>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Continue duplicating remaining testimonials for seamless loop... -->
+                    <div class="testimonial-card bg-white border border-gray-200 w-[600px] flex-shrink-0">
+
+                        <!-- YouTube Video -->
+                        <div class="relative aspect-video bg-black">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/giE894r71Rc"
+                                title="AMP Corporate Video (Anand Motor Products)" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+
+                        <!-- Info -->
+                        <div class="p-5">
+                            <h4 class="text-base font-semibold text-gray-900">
+                                AMP Corporate Video
+                            </h4>
+                            <p class="text-sm text-gray-600">
+                                Anand Motor Products · Company Overview
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Director's Message Section -->
+    <section class="py-20 grid-pattern-bg">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Director's Image -->
+                <div class="animate-on-scroll animate-fadeInLeft">
+                    <div class="director-card bg-white rounded-sm overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800" alt="Director"
+                            class="w-full h-[700px] object-cover">
+                    </div>
+                </div>
+
+                <!-- Message Content -->
+                <div class="space-y-6">
+                    <h2 class="text-4xl md:text-5xl font-bold text-blue-800 animate-on-scroll">
+                        Director's <span class="text-blue-800">Message</span>
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-red-600 to-blue-800 animate-on-scroll delay-100"></div>
+
+                    <div class="space-y-4 text-gray-700 text-lg leading-relaxed">
+                        <p class="animate-on-scroll delay-200">
+                            The Indian Automotive Aftermarket is in an accelerated growth phase. We are today placed in
+                            a robust and exciting market scenario where a continued thrust on quality product, efficient
+                            delivery and service will realize multiplier ROI across the distribution channel.
+                        </p>
+
+                        <p class="animate-on-scroll delay-300">
+                            Anandmotor has enjoyed 60 years of uninterrupted, successful operations in the Indian market
+                            with pioneering expertise in a diverse range of automotive products. Today, with rapid
+                            expansion and growth in our product portfolio, we are the single point source of an
+                            awe-inspiring range of 2500+ products for passenger and commercial vehicles across 2-W, 3-W
+                            and 4-W segments.
+                        </p>
+                    </div>
+
+                    <div class="pt-6 animate-on-scroll delay-400">
+                        <div class="bg-white rounded-sm p-6 shadow-lg border-l-4 border-red-600">
+                            <p class="text-xl font-bold text-gray-800">Mr. Manav Kapur</p>
+                            <p class="text-gray-600">Executive Director, Anandmotor International</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- International Trips Section -->
+    <section class="py-20 bg-white text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 animate-on-scroll">
+                    <span class="text-blue-800">INTERNATIONAL LEISURE TRIPS</span>
+                    <span class="block text-transparent bg-clip-text bg-red-500 mt-2">FOR
+                        CHANNEL PARTNERS</span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-red-600 to-blue-800 mx-auto animate-on-scroll delay-100">
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Trip Card 1 -->
+                <div
+                    class="trip-card bg-white shadow-md text-black rounded-sm overflow-hidden shadow-xl animate-on-scroll">
+                    <div class="relative aspect-video">
+                        <img src="https://images.unsplash.com/photo-1523978591478-c753949ff840?w=800"
+                            alt="Dealers Trip to Tashkent" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold mb-2">Dealers Trip to Tashkent</h3>
+                        <p class="text-gray-600">Uzbekistan • 2023</p>
+                    </div>
+                </div>
+
+                <!-- Trip Card 2 -->
+                <div
+                    class="trip-card bg-white shadow-md text-black rounded-sm overflow-hidden shadow-xl animate-on-scroll delay-100">
+                    <div class="relative aspect-video">
+                        <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800"
+                            alt="Dealers Trip to Phuket" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold mb-2">Dealers Trip to Phuket</h3>
+                        <p class="text-gray-600">Thailand • 2023</p>
+                    </div>
+                </div>
+
+                <!-- Trip Card 3 -->
+                <div
+                    class="trip-card bg-white shadow-md text-black rounded-sm overflow-hidden shadow-xl animate-on-scroll delay-200">
+                    <div class="relative aspect-video">
+                        <img src="https://images.unsplash.com/photo-1528181304800-259b08848526?w=800"
+                            alt="Dealers Trip to Thailand" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold mb-2">Dealers Trip to Thailand</h3>
+                        <p class="text-gray-600">Thailand • 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Certifications Section -->
+    <section class="py-20 grid-pattern-bg">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-blue-800 mb-4 animate-on-scroll">
+                    QUALITY <span class="text-red-500">CERTIFICATIONS</span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-red-600 to-blue-800 mx-auto animate-on-scroll delay-100">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                <!-- Certificate 1 -->
+                <div class="cert-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll">
+                    <div class="aspect-[3/4] bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600"
+                            alt="ISO 9001:2015" class="w-full h-full object-cover">
+                    </div>
+                    <div class="bg-gradient-to-br from-red-600 to-red-700 text-white text-center py-4">
+                        <p class="font-bold text-lg">ISO 9001:2015</p>
+                    </div>
+                </div>
+
+                <!-- Certificate 2 -->
+                <div class="cert-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll delay-100">
+                    <div class="aspect-[3/4] bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600"
+                            alt="IATF 16949:2016" class="w-full h-full object-cover">
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-700 to-blue-800 text-white text-center py-4">
+                        <p class="font-bold text-lg">IATF 16949:2016</p>
+                    </div>
+                </div>
+
+                <!-- Certificate 3 -->
+                <div class="cert-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll delay-200">
+                    <div class="aspect-[3/4] bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600"
+                            alt="Great Place to Work" class="w-full h-full object-cover">
+                    </div>
+                    <div class="bg-gradient-to-br from-red-600 to-red-700 text-white text-center py-4">
+                        <p class="font-bold text-lg">Great Place To Work</p>
+                    </div>
+                </div>
+
+                <!-- Certificate 4 -->
+                <div class="cert-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll delay-300">
+                    <div class="aspect-[3/4] bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600"
+                            alt="ISO 14001:2015" class="w-full h-full object-cover">
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-700 to-blue-800 text-white text-center py-4">
+                        <p class="font-bold text-lg">ISO 14001:2015</p>
+                    </div>
+                </div>
+
+                <!-- Certificate 5 -->
+                <div class="cert-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll delay-400">
+                    <div class="aspect-[3/4] bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600"
+                            alt="ISO 45001:2018" class="w-full h-full object-cover">
+                    </div>
+                    <div class="bg-gradient-to-br from-red-600 to-red-700 text-white text-center py-4">
+                        <p class="font-bold text-lg">ISO 45001:2018</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mechanic Activations Section -->
+    <section class="py-20 bg-white text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-blue-800 mb-4 animate-on-scroll">
+                    MECHANIC <span class="text-red-500">ACTIVATIONS</span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-red-600 to-blue-800 mx-auto animate-on-scroll delay-100">
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Image 1 -->
+                <div class="activation-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600"
+                        alt="Mechanic Activation" class="w-full h-full object-cover aspect-square">
+                </div>
+
+                <!-- Image 2 -->
+                <div class="activation-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll delay-100">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600"
+                        alt="Mechanic Workshop" class="w-full h-full object-cover aspect-square">
+                </div>
+
+                <!-- Image 3 -->
+                <div class="activation-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll delay-200">
+                    <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600" alt="Training Session"
+                        class="w-full h-full object-cover aspect-square">
+                </div>
+
+                <!-- Image 4 -->
+                <div class="activation-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll delay-300">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600" alt="Mechanic Meet"
+                        class="w-full h-full object-cover aspect-square">
+                </div>
+
+                <!-- Image 5 -->
+                <div class="activation-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll delay-100">
+                    <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600" alt="Product Display"
+                        class="w-full h-full object-cover aspect-square">
+                </div>
+
+                <!-- Image 6 -->
+                <div class="activation-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll delay-200">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600" alt="Training Program"
+                        class="w-full h-full object-cover aspect-square">
+                </div>
+
+                <!-- Image 7 -->
+                <div class="activation-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll delay-300">
+                    <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600" alt="Roadshow"
+                        class="w-full h-full object-cover aspect-square">
+                </div>
+
+                <!-- Image 8 -->
+                <div class="activation-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll delay-400">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600" alt="Demo Session"
+                        class="w-full h-full object-cover aspect-square">
+                </div>
+
+                <!-- Image 9 -->
+                <div class="activation-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll delay-100">
+                    <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=600" alt="Award Ceremony"
+                        class="w-full h-full object-cover aspect-square">
+                </div>
+
+                <!-- Image 10 -->
+                <div class="activation-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll delay-200">
+                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600" alt="Certification"
+                        class="w-full h-full object-cover aspect-square">
+                </div>
+
+                <!-- Image 11 -->
+                <div class="activation-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll delay-300">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600" alt="Team Building"
+                        class="w-full h-full object-cover aspect-square">
+                </div>
+
+                <!-- Image 12 -->
+                <div class="activation-card bg-white rounded-sm shadow-xl overflow-hidden animate-on-scroll delay-400">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600" alt="Workshop Event"
+                        class="w-full h-full object-cover aspect-square">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 grid-pattern-bg">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <!-- Left Side - FAQ Logo/Image -->
+                <div class="animate-fadeInUp">
+                    <div class="sticky top-24">
+                        <div class="bg-white rounded-sm shadow-2xl p-12 flex items-center justify-center">
+                            <!-- FAQ Graphic -->
+                            <div class="relative">
+                                <div
+                                    class="absolute -inset-4 bg-gradient-to-r from-red-600 to-blue-800 rounded-full opacity-20 blur-2xl">
+                                </div>
+                                <svg class="w-64 h-64 relative" viewBox="0 0 200 200"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Question Mark Circle -->
+                                    <circle cx="70" cy="100" r="60" fill="#dc2626" opacity="0.9" />
+                                    <text x="70" y="125" font-size="80" font-weight="bold" fill="white"
+                                        text-anchor="middle" font-family="Poppins">?</text>
+
+                                    <!-- FAQS Text Circle -->
+                                    <circle cx="140" cy="100" r="55" fill="#1e40af" opacity="0.9" />
+                                    <text x="140" y="85" font-size="16" font-weight="bold" fill="white"
+                                        text-anchor="middle" font-family="Poppins">F A Q S</text>
+                                    <line x1="140" y1="95" x2="140" y2="125" stroke="white" stroke-width="4" />
+                                    <circle cx="140" cy="135" r="4" fill="white" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div
+                            class="mt-8 bg-gradient-to-br from-red-600 to-blue-800 rounded-sm p-6 text-white text-center">
+                            <h3 class="text-2xl font-bold mb-2">Still Have Questions?</h3>
+                            <p class="mb-4 opacity-90">Our team is here to help you</p>
+                            <a href="tel:+919999999999"
+                                class="inline-block bg-white text-red-600 font-bold px-8 py-3 rounded-sm hover:bg-gray-100 transition-all transform hover:scale-105">
+                                Call: +91 99999-99999
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - FAQ Questions -->
+                <div class="animate-fadeInUp delay-100">
+                    <div class="mb-12">
+                        <h2 class="text-4xl md:text-5xl font-bold text-blue-800 mb-4">
+                            Frequently Asked <span class="text-red-500">Questions</span>
+                        </h2>
+                        <div class="w-24 h-1 bg-gradient-to-r from-red-600 to-blue-800 mb-4"></div>
+                        <p class="text-gray-600 text-lg">Find answers to common questions about Anand Motor Product</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- FAQ 1 -->
+                        <div class="faq-item bg-white rounded-sm shadow-lg overflow-hidden">
+                            <div class="faq-question p-6 flex items-center justify-between" onclick="toggleFAQ(1)">
+                                <h3 class="text-lg font-semibold text-gray-800 pr-4">
+                                    Q: How does Anand Motor ensure consistent product quality?
+                                </h3>
+                                <svg class="faq-icon w-6 h-6 text-red-600 flex-shrink-0" id="icon-1" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer px-6 pb-6" id="answer-1">
+                                <p class="text-gray-600 leading-relaxed">
+                                    We maintain ISO 9001:2015 certification and operate a state-of-the-art facility with
+                                    an 11-tank phosphating plant combined with mechanical treatment. Our fully
+                                    computerized manufacturing process ensures every product meets stringent quality
+                                    standards. Each component undergoes rigorous testing before dispatch.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="faq-item bg-white rounded-sm shadow-lg overflow-hidden">
+                            <div class="faq-question p-6 flex items-center justify-between" onclick="toggleFAQ(2)">
+                                <h3 class="text-lg font-semibold text-gray-800 pr-4">
+                                    Q: What is the extent of Anand Motor's product range?
+                                </h3>
+                                <svg class="faq-icon w-6 h-6 text-red-600 flex-shrink-0" id="icon-2" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer px-6 pb-6" id="answer-2">
+                                <p class="text-gray-600 leading-relaxed">
+                                    We offer over 2,500+ products including rubber parts, filters (300+ varieties),
+                                    lubricants, bearings, ignition locks, spark plugs, gaskets, and complete engine
+                                    parts. This extensive range makes us the widest product supplier in India, allowing
+                                    dealers to source everything from a single manufacturer.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="faq-item bg-white rounded-sm shadow-lg overflow-hidden active">
+                            <div class="faq-question p-6 flex items-center justify-between" onclick="toggleFAQ(3)">
+                                <h3 class="text-lg font-semibold text-gray-800 pr-4">
+                                    Q: How quickly can Anand Motor fulfill orders?
+                                </h3>
+                                <svg class="faq-icon w-6 h-6 text-red-600 flex-shrink-0 rotate" id="icon-3" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer px-6 pb-6 active" id="answer-3">
+                                <p class="text-gray-600 leading-relaxed">
+                                    <strong class="text-red-600">A: We guarantee rapid dispatch within 24
+                                        hours</strong>, ensuring your supply chain remains efficient and your inventory
+                                    is well-managed. Our streamlined logistics and 32,000 sq. mtrs manufacturing
+                                    facility enable us to process orders quickly without compromising quality.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="faq-item bg-white rounded-sm shadow-lg overflow-hidden">
+                            <div class="faq-question p-6 flex items-center justify-between" onclick="toggleFAQ(4)">
+                                <h3 class="text-lg font-semibold text-gray-800 pr-4">
+                                    Q: How does Anand Motor support its distributors?
+                                </h3>
+                                <svg class="faq-icon w-6 h-6 text-red-600 flex-shrink-0" id="icon-4" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer px-6 pb-6" id="answer-4">
+                                <p class="text-gray-600 leading-relaxed">
+                                    We provide comprehensive support including free freight on orders over ₹25,000,
+                                    exclusive area rights for 3 years, dedicated sales team assistance, marketing
+                                    materials, technical training, and a loyalty app for retailers and mechanics. Our
+                                    1000+ employee team is committed to your success.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 5 -->
+                        <div class="faq-item bg-white rounded-sm shadow-lg overflow-hidden">
+                            <div class="faq-question p-6 flex items-center justify-between" onclick="toggleFAQ(5)">
+                                <h3 class="text-lg font-semibold text-gray-800 pr-4">
+                                    Q: What kind of ROI can distributors expect with Anand Motor?
+                                </h3>
+                                <svg class="faq-icon w-6 h-6 text-red-600 flex-shrink-0" id="icon-5" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer px-6 pb-6" id="answer-5">
+                                <p class="text-gray-600 leading-relaxed">
+                                    Our distributors enjoy better margins by partnering directly with the manufacturer,
+                                    eliminating middlemen costs. With high-demand products, strong brand recognition
+                                    since 1978, and no strict sales targets, dealers typically see improved
+                                    profitability within the first year. Our extensive product range also reduces
+                                    inventory complexity and increases turnover.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 6 -->
+                        <div class="faq-item bg-white rounded-sm shadow-lg overflow-hidden">
+                            <div class="faq-question p-6 flex items-center justify-between" onclick="toggleFAQ(6)">
+                                <h3 class="text-lg font-semibold text-gray-800 pr-4">
+                                    Q: How does Anand Motor help distributors manage their inventory?
+                                </h3>
+                                <svg class="faq-icon w-6 h-6 text-red-600 flex-shrink-0" id="icon-6" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer px-6 pb-6" id="answer-6">
+                                <p class="text-gray-600 leading-relaxed">
+                                    We offer flexible ordering with no mandatory bulk purchases of ₹2-4 lakh that strain
+                                    finances. Our wide product range from a single supplier simplifies inventory
+                                    management. With 24-hour dispatch and 5000+ pan-India retail points, you can
+                                    maintain optimal stock levels without tying up excessive capital.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 7 -->
+                        <div class="faq-item bg-white rounded-sm shadow-lg overflow-hidden">
+                            <div class="faq-question p-6 flex items-center justify-between" onclick="toggleFAQ(7)">
+                                <h3 class="text-lg font-semibold text-gray-800 pr-4">
+                                    Q: What are Anand Motor's global capabilities?
+                                </h3>
+                                <svg class="faq-icon w-6 h-6 text-red-600 flex-shrink-0" id="icon-7" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer px-6 pb-6" id="answer-7">
+                                <p class="text-gray-600 leading-relaxed">
+                                    We have established brand presence in 15+ countries with proven international market
+                                    penetration. Our products meet global quality standards, and we provide export
+                                    support to distributors looking to expand beyond India. This global expertise gives
+                                    our partners confidence in product quality and reliability.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 8 -->
+                        <div class="faq-item bg-white rounded-sm shadow-lg overflow-hidden">
+                            <div class="faq-question p-6 flex items-center justify-between" onclick="toggleFAQ(8)">
+                                <h3 class="text-lg font-semibold text-gray-800 pr-4">
+                                    Q: How does Anand Motor stay current with industry regulations?
+                                </h3>
+                                <svg class="faq-icon w-6 h-6 text-red-600 flex-shrink-0" id="icon-8" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer px-6 pb-6" id="answer-8">
+                                <p class="text-gray-600 leading-relaxed">
+                                    With 46 years of experience since 1978, we maintain continuous compliance with
+                                    industry standards through ISO 9001:2015 certification, regular audits, and
+                                    investment in modern technology. Our R&D team stays updated with latest automotive
+                                    regulations and emission norms, ensuring all products meet current and upcoming
+                                    standards.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white text-white py-4 pt-14">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <!-- Logo -->
+                <div class="flex h-10 w-50 items-center space-x-3 ml-14 pb-4 animate-fadeInLeft">
+                    <img src="/AMPAutomotiveLogo(Transparent).png" alt="AMP Automotive Components"
+                        class="h-20 lg:h-24 w-auto">
+                </div>
+
+                <!-- Links -->
+                <div class="flex flex-wrap items-center justify-center gap-6 md:gap-8 text-sm md:text-base">
+                    <a href="#" class="footer-link text-black hover:text-red-600 transition-colors">
+                        Privacy Policy
+                    </a>
+                    <span class="text-gray-600 hidden md:inline">|</span>
+                    <a href="#" class="footer-link text-black hover:text-red-600 transition-colors">
+                        Terms & Condition
+                    </a>
+                    <span class="text-gray-600 hidden md:inline">|</span>
+                    <a href="mailto:Anandmotor@Anandmotor.com"
+                        class="footer-link text-black hover:text-red-600 transition-colors">
+                        Email Us: Anandmotor@Anandmotor.com
+                    </a>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center text-gray-900 text-xs md:text-sm mt-6 pt-6 border-t border-gray-800">
+                <p>&copy; 2024 Anandmotor Auto Components. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/919999999999" target="_blank"
+        class="fixed bottom-8 right-8 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl z-50 transition-all hover:scale-110">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+        </svg>
+    </a>
+
+    <script src="/script.js"></script>
+
+</body>
+
+</html>
