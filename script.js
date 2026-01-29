@@ -78,3 +78,55 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+
+  // Carousel scroll functionality
+    const scrollContainer = document.getElementById('productScroll');
+    const scrollLeftBtn = document.getElementById('scrollLeft');
+    const scrollRightBtn = document.getElementById('scrollRight');
+
+    // Scroll amount (adjust based on your product card width)
+    const scrollAmount = 300;
+
+    scrollLeftBtn.addEventListener('click', () => {
+        scrollContainer.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+    });
+
+    scrollRightBtn.addEventListener('click', () => {
+        scrollContainer.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    });
+
+    // Optional: Hide arrows at start/end
+    function updateArrowVisibility() {
+        const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+        
+        // Hide left arrow if at start
+        if (scrollContainer.scrollLeft <= 0) {
+            scrollLeftBtn.style.opacity = '0.3';
+            scrollLeftBtn.style.pointerEvents = 'none';
+        } else {
+            scrollLeftBtn.style.opacity = '1';
+            scrollLeftBtn.style.pointerEvents = 'auto';
+        }
+
+        // Hide right arrow if at end
+        if (scrollContainer.scrollLeft >= maxScroll - 5) {
+            scrollRightBtn.style.opacity = '0.3';
+            scrollRightBtn.style.pointerEvents = 'none';
+        } else {
+            scrollRightBtn.style.opacity = '1';
+            scrollRightBtn.style.pointerEvents = 'auto';
+        }
+    }
+
+    // Update arrow visibility on scroll
+    scrollContainer.addEventListener('scroll', updateArrowVisibility);
+    
+    // Initial check
+    updateArrowVisibility();
